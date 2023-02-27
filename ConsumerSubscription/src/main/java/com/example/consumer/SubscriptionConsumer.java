@@ -21,7 +21,7 @@ public class SubscriptionConsumer {
 	@Autowired
 	JPARepository Repository;
 
-	@RabbitListener(queues = RabbitMQConstants.QUEUE_SUBSCRIPTION)
+	@RabbitListener(queues = RabbitMQConstants.QUEUE_SUBSCRIPTION, containerFactory = "rabbitListenerContainerFactory")
 	public void consumer(Subscription subscription) {
 		
 		String receivedName = subscription.getName();
